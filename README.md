@@ -20,7 +20,7 @@
 <div align="center">
 
 <sub>Apple silicon and Intel, signed and notarized, updates itself.
-&nbsp;·&nbsp; <b>iPhone:</b> coming soon on TestFlight, then the App Store.</sub><br>
+&nbsp;·&nbsp; <b>iPhone:</b> <a href="#install-on-iphone">sideload it now</a>; TestFlight and the App Store are coming.</sub><br>
 <sub>[Website][website] &nbsp;·&nbsp; [Support][support] &nbsp;·&nbsp; [All releases][releases]
 &nbsp;·&nbsp; [Report a bug][bug]</sub>
 
@@ -48,6 +48,22 @@
 </details>
 
 <p align="center"><sub>Screenshots use a made-up catalogue: the artists, albums and covers are not real.</sub></p>
+
+## Install on iPhone
+
+The App Store and TestFlight are coming. Until then, sideload it with your own free Apple ID:
+
+1. Install [SideStore](https://sidestore.io) or [AltStore](https://altstore.io) on your iPhone.
+2. Add the Spotless source: `https://opena.tech/spotless/altstore.json`
+   ([add to AltStore](https://altstore.io/source/opena.tech/spotless/altstore.json); in SideStore,
+   open `sidestore://source?url=https://opena.tech/spotless/altstore.json` or paste the URL under
+   Sources › +).
+3. Tap **Install** on Spotless.
+
+Good to know: with a free Apple ID, sideloaded apps run for 7 days and are then re-signed (both
+tools do this on their own in the background), and at most 3 sideloaded apps can be active at
+once, the store app included. Needs iOS 17 or later. The IPA is also on each `ios-v*`
+[release][releases].
 
 ## What it does
 
