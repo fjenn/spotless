@@ -1,3 +1,11 @@
+## Spotless 1.0.4-rc.9 (test build)
+
+- Offline, or where YouTube is blocked, playback no longer goes through a crash path in its last-resort fallback: Spotless sees YouTube can't be reached and says so.
+- Browse all: tile names never split mid-word ("Podcasts", "Audiobooks"); a tile that is too narrow shrinks its title instead.
+- Local files can be added to Liked Songs from the player bar and the Now Playing panel, like any other song.
+- Browse › Podcasts › Search podcasts opens search for shows with the cursor in the search box.
+- Linux: the .deb and .rpm now pull in libEGL, which the app needs to start; the AppImage needs it from the system (every desktop has it; minimal and server installs: `sudo apt install libegl1`). Without desktop-file-utils, the AppImage no longer logs an error on every launch.
+
 ## Spotless 1.0.4-rc.8 (test build)
 
 - Windows and Linux: the app says "this PC" / "this computer" and "Show in File Explorer" where it used to say "this Mac" and "Show in Finder".

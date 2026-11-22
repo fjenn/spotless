@@ -992,7 +992,13 @@ pub fn run() {
                 // at this AppImage's path. Windows' NSIS installer writes them to the registry.
                 #[cfg(target_os = "linux")]
                 if app.env().appimage.is_some() {
-                    if let Err(e) = app.deep_link().register_all() {
+                    // The plugin writes the .desktop file, then runs `update-desktop-database`
+                    // (desktop-file-utils), and logs an ERROR when that is missing. Every desktop
+                    // ships it; only minimal or server installs don't, and there nothing can open
+                    // a link anyway. So skip quietly there instead of erroring on every launch.
+                    if !on_path("update-desktop-database") {
+                        tracing::debug!("no update-desktop-database: spotless:// links not registered");
+                    } else if let Err(e) = app.deep_link().register_all() {
                         tracing::warn!(error = %e, "could not register the spotless:// link handler");
                     }
                 }
@@ -1601,4 +1607,15 @@ mod tests {
         assert!(close_hides(Some("garbage")));
         assert!(!close_hides(Some("false")));
     }
+}
+
+/// Is `cmd` an executable on `$PATH`? (Linux only: used before shelling out to desktop tools.)
+#[cfg(target_os = "linux")]
+fn on_path(cmd: &str) -> bool {
+    use std::os::unix::fs::PermissionsExt;
+    std::env::var_os("PATH").is_some_and(|paths| {
+        std::env::split_paths(&paths).any(|dir| {
+            std::fs::metadata(dir.join(cmd)).is_ok_and(|m| m.is_file() && m.permissions().mode() & 0o111 != 0)
+        })
+    })
 }
