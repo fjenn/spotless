@@ -987,6 +987,15 @@ pub fn run() {
 
             {
                 use tauri_plugin_deep_link::DeepLinkExt;
+                // An AppImage has no installer to tell the desktop about spotless:// links (the
+                // .deb/.rpm ship them in their .desktop file): register them at launch, pointing
+                // at this AppImage's path. Windows' NSIS installer writes them to the registry.
+                #[cfg(target_os = "linux")]
+                if app.env().appimage.is_some() {
+                    if let Err(e) = app.deep_link().register_all() {
+                        tracing::warn!(error = %e, "could not register the spotless:// link handler");
+                    }
+                }
                 let h = handle.clone();
                 app.deep_link().on_open_url(move |e| {
                     deeplink::route(&h, e.urls().into_iter().map(|u| u.to_string()));

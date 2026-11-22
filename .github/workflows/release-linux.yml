@@ -233,6 +233,16 @@ jobs:
           path: smoke/
           if-no-files-found: warn
 
+      - name: Upload the packages (dry run, for the E2E suite)
+        if: env.DRY_RUN == 'true'
+        uses: actions/upload-artifact@v4
+        with:
+          name: linux-packages
+          path: |
+            target/release/bundle/appimage/*.AppImage
+            target/release/bundle/deb/*.deb
+          retention-days: 7
+
       - name: Verify it loads and runs on foreign distros
         run: |
           set -euo pipefail
