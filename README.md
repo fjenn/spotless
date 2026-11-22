@@ -20,7 +20,6 @@
 <div align="center">
 
 <sub>Apple silicon and Intel, signed and notarized, updates itself.
-&nbsp;·&nbsp; <b><a href="#install-on-windows">Windows</a></b> and <b><a href="#install-on-linux">Linux</a></b>: early builds
 &nbsp;·&nbsp; <b>iPhone:</b> coming soon to the App Store; <a href="#install-on-iphone">install it yourself</a> in the meantime.</sub><br>
 <sub>[Website][website] &nbsp;·&nbsp; [Support][support] &nbsp;·&nbsp; [All releases][releases]
 &nbsp;·&nbsp; [Report a bug][bug]</sub>
@@ -49,32 +48,6 @@
 </details>
 
 <p align="center"><sub>Screenshots use a made-up catalogue: the artists, albums and covers are not real.</sub></p>
-
-## Install on Windows
-
-64-bit Windows 10 or 11.
-
-1. Download **Spotless-Setup.exe** from the [newest release with a Windows build][releases].
-2. Run it. It installs for your user only, with no admin rights needed, and opens Spotless.
-3. The installer isn't code-signed yet, so Windows may say *"Windows protected your PC"*. Choose
-   **More info › Run anyway**.
-
-Spotless updates itself, like on the Mac. To uninstall it, use **Settings › Apps**.
-
-## Install on Linux
-
-64-bit (x86_64) Linux from 2024 or newer, such as Ubuntu 24.04, Debian 13 or Fedora 40. Pick one:
-
-- **AppImage** (any distro, updates itself): download `Spotless.AppImage`, then
-  `chmod +x Spotless.AppImage` and run it.
-- **Debian / Ubuntu**: `sudo apt install ./Spotless_amd64.deb`
-- **Fedora / openSUSE**: `sudo dnf install ./Spotless.x86_64.rpm`
-
-The .deb and .rpm are updated by your package manager when you install a newer one. They are not
-updated in place.
-
-Each release lists the SHA-256 of every file in `SHA256SUMS`. Check a download with
-`sha256sum -c SHA256SUMS --ignore-missing`.
 
 ## Install on iPhone
 
