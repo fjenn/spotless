@@ -1,3 +1,9 @@
+## Spotless 1.0.4-rc.10 (test build)
+
+- Behind a corporate or system HTTP proxy, songs play again: the app's own local stream links no longer go through the proxy (every track used to fail).
+- When a song can't be played, the message stays on screen longer (12 seconds), so it isn't missed.
+- Windows: no more log noise from a harmless browser warning every few seconds.
+
 ## Spotless 1.0.4-rc.9 (test build)
 
 - Offline, or where YouTube is blocked, playback no longer goes through a crash path in its last-resort fallback: Spotless sees YouTube can't be reached and says so.
