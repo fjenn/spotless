@@ -133,6 +133,19 @@ with your YouTube account, and only then.
 
 The full text is on the [privacy page][privacy].
 
+## Code signing policy
+
+Free code signing provided by SignPath.io, certificate by SignPath Foundation.
+
+- **Committers and reviewers:** members of the [fjenn](https://github.com/fjenn) organization.
+- **Approvers:** [fjenn](https://github.com/fjenn) (owner).
+- **Builds:** Windows binaries are built only from this repository's source code, by GitHub
+  Actions (`.github/workflows/release-windows.yml`). Nothing is built or signed on a personal
+  machine.
+- **Privacy:** the app sends no telemetry. Its network calls go only to the music, podcast and
+  lyrics sources it plays from, GitHub (for updates) and, if you link devices, the optional sync
+  relay. See [Privacy](#privacy).
+
 ## Build from source
 
 ### Mac
