@@ -168,7 +168,17 @@ fn map_err(e: RpError) -> FallbackError {
 
 #[cfg(test)]
 mod tests {
-    use super::FallbackError;
+    /// Offline: the probe fails, so rustypipe (which would panic) is never called, and the
+    /// error is silence (`answered() == false`), not a verdict on the track.
+    #[tokio::test]
+    async fn unreachable_youtube_skips_rustypipe_without_panicking() {
+        // Port 1 on loopback: nothing listens, the connect is refused at once.
+        let err = resolve_with_probe("dQw4w9WgXcQ", true, "http://127.0.0.1:1/").await.unwrap_err();
+        assert!(matches!(&err, FallbackError::RustyPipe(m) if m.starts_with("unreachable")), "{err}");
+        assert!(!err.answered());
+    }
+
+    use super::{resolve_with_probe, FallbackError};
 
     #[test]
     fn only_a_verdict_counts_as_an_answer() {
@@ -182,17 +192,3 @@ mod tests {
     }
 }
 
-#[cfg(test)]
-mod tests {
-    use super::*;
-
-    /// Offline: the probe fails, so rustypipe (which would panic) is never called, and the
-    /// error is silence (`answered() == false`), not a verdict on the track.
-    #[tokio::test]
-    async fn unreachable_youtube_skips_rustypipe_without_panicking() {
-        // Port 1 on loopback: nothing listens, the connect is refused at once.
-        let err = resolve_with_probe("dQw4w9WgXcQ", true, "http://127.0.0.1:1/").await.unwrap_err();
-        assert!(matches!(&err, FallbackError::RustyPipe(m) if m.starts_with("unreachable")), "{err}");
-        assert!(!err.answered());
-    }
-}
