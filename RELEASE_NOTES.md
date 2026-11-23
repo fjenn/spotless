@@ -1,3 +1,7 @@
+## Spotless 1.0.4-rc.11 (test build)
+
+- Windows and Linux: the tray menu's "now playing" row follows every song and podcast (it could read "Nothing playing" while something played).
+
 ## Spotless 1.0.4-rc.10 (test build)
 
 - Behind a corporate or system HTTP proxy, songs play again: the app's own local stream links no longer go through the proxy (every track used to fail).
