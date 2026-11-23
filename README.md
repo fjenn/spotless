@@ -58,6 +58,17 @@ Spotless for iPhone is coming to the App Store soon. If you want it now, install
 - **Or sideload the ready-made IPA** from the latest `ios-v*` [release][releases] with the tool you
   prefer. Needs iOS 17 or later.
 
+## Install on Linux
+
+Early release for x86_64. Download one of these from the [newest release with Linux builds](https://github.com/fjenn/spotless/releases/tag/v1.0.4-rc.11):
+
+- **AppImage** (any distro): `Spotless.AppImage`, then `chmod +x Spotless.AppImage` and run it.
+  Minimal or server installs may need `sudo apt install libegl1` first.
+- **Debian / Ubuntu**: `sudo apt install ./Spotless_amd64.deb`
+- **Fedora / openSUSE**: `sudo dnf install ./Spotless.x86_64.rpm`
+
+Linux builds are not signed; check the download against `SHA256SUMS` on the same release.
+
 ## What it does
 
 Spotless plays music, podcasts and audiobooks. The Mac app (Tauri + Svelte) and the iPhone app
@@ -223,8 +234,8 @@ live.
 <details>
 <summary><b>Does it work on Windows, Linux or Android?</b></summary>
 <br>
-Not as a supported release. The Mac and iPhone apps are what we build and test. The upstream
-project, <a href="https://github.com/SimoHypers/limusic">Limusic</a>, has Windows and Linux builds.
+Linux: yes, see <a href="#install-on-linux">Install on Linux</a>. Windows is being tested and comes
+soon. Android is not planned yet.
 </details>
 
 ## Credits
